@@ -24,22 +24,25 @@ app/public/local.php
 
 # whitelist the root directory except the  node_modules directory
 /*
-!css/
-!img/
-!sass/
-!index.html
-!script.js
-!docs/
+!src
+!dist
 
+# whitelist everything in the "src" directory,:
 
+!src/js
+!src/js/module
+!src/js/views
+!src/index.js
+!src/index.html
 
-# ignore everything in the "css" directory, except:
-# fonts directories and files icon-font.css and  style.css
-css/*
-!css/fonts/
-!css/style.css
-!css/icon-font.css
+# whitelist everything in the "dist" directory,:
 
+!dist/css
+!dist/css/style.css
+!dist/img
+!dist/img/icons.svg
+!dist/bundle.js
+!dist/index.html
 
 
 # ignore all files starting with . or ~
@@ -87,6 +90,8 @@ Thumbs.db
 
 # track these files, if they exist
 !package.json
+!webpack.js
+!.babelrc
 !.gitignore
 !.editorconfig
 !.phpcs.xml.dist
