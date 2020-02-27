@@ -1,28 +1,28 @@
 {
-  "name": "weather",
+  "name": "weather-local",
   "version": "1.0.0",
-  "description": "weaher project",
+  "description": "weather local project",
   "main": "index.js",
   "scripts": {
-    "watch:sass": "node-sass sass/card.scss css/style.css -w",
-    "devserver": "live-server",
-    "start": "npm-run-all --parallel devserver watch:sass",
-    "compile:sass": "node-sass sass/card.scss css/style.css",
-    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" css/style.css -o css/style.prefix.css",
-    "compress:css": "node-sass css/style.prefix.css css/style.css --output-style compressed",
-    "build:css": "npm-run-all compile:sass prefix:css compress:css copy2docs",
-    "copy2docs": "copyfiles index.html css/style.css script.js css/fonts/** img/** docs"
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
-  "author": "Catherine Healey",
+  "author": "Cathy Healey ",
   "license": "ISC",
-  "dependencies": {
-    "node-sass": "^4.12.0"
-  },
   "devDependencies": {
-    "autoprefixer": "^9.6.1",
-    "concat": "^1.0.3",
-    "copyfiles": "^2.1.1",
-    "npm-run-all": "^4.1.5",
-    "postcss-cli": "^6.1.3"
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "core-js": "^3.6.4",
+    "fractional": "^1.0.0",
+    "regenerator-runtime": "^0.13.3"
   }
 }
