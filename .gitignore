@@ -25,7 +25,7 @@ app/public/local.php
 # whitelist the root directory except the  node_modules directory
 /*
 !src
-!dist
+!docs
 
 # whitelist everything in the "src" directory,:
 
@@ -37,12 +37,12 @@ app/public/local.php
 
 # whitelist everything in the "dist" directory,:
 
-!dist/css
-!dist/css/style.css
-!dist/img
-!dist/img/icons.svg
-!dist/bundle.js
-!dist/index.html
+!docs/css
+!docs/css/style.css
+!docs/img
+!docs/img/icons.svg
+!docs/bundle.js
+!docs/index.html
 
 
 # ignore all files starting with . or ~

@@ -6,15 +6,24 @@
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack-dev-server --mode development --open",
+    "compile:sass": "node-sass src/sass/main.scss src/css/style.css",
+    "prefix:css": "postcss --use autoprefixer -b \"last 10 versions\" src/css/style.css -o src/css/style.prefix.css",
+    "compress:css": "node-sass src/css/style.prefix.css dist/css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css copy2docs",
+    "copy2docs": "copyfiles --up 1 dist/**/*.*  docs"
   },
   "author": "Cathy Healey ",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.8.4",
     "@babel/preset-env": "^7.8.4",
+    "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
+    "copyfiles": "^2.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.0",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
@@ -23,6 +32,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.6.4",
     "fractional": "^1.0.0",
+    "node-sass": "^4.13.1",
     "regenerator-runtime": "^0.13.3"
   }
 }

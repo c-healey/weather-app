@@ -1,0 +1,261 @@
+$color-grey-light-1: #f7f7f7;
+$color-grey-light-2: #eee;
+$color-primary: #5643fa;
+$color-primary-light: #2998ff;
+$color-primary-dark: #5643fa;
+$color-white: #fff;
+$color-black: #000;
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+$color-tertiary: #55c57a;
+$color-tertiary-light: #7ed56f;
+$color-tertiary-dark: #28b485;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.container {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns:
+    [full-start] minmax(4rem, 1fr) [center-start] repeat(
+      auto-fit,
+      [col-start] minmax(34rem, 1fr) [col-end ]
+    )
+    [center-end] minmax(4rem, 1fr) [full-end];
+
+  grid-row-gap: 10rem;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+  background-color: $color-grey-light-1;
+}
+
+.card {
+  grid-column: center-start/center-end;
+
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem;
+
+  &__side {
+    height: 52rem;
+    transition: all 0.8s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backface-visibility: hidden;
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &--front {
+      background-color: $color-white;
+    }
+    &--back {
+      transform: rotateY(180deg);
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+  }
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+  /* front side styling */
+  &__picture {
+    background-size: cover;
+    height: 15rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        $color-secondary-light,
+        $color-secondary-dark
+      );
+    }
+  }
+  &__heading {
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    color: $color-white;
+    position: absolute;
+    top: 8rem;
+    right: 2rem;
+    width: 75%;
+  }
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+  &__details {
+    padding: 3rem;
+  }
+
+  /*back side styling */
+
+  &__price-box {
+    color: $color-white;
+    margin-bottom: 8rem;
+  }
+
+  .weather {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    min-height: 19rem;
+
+    .name,
+    .date {
+      font-size: 2rem;
+    }
+    .temp,
+    .city-temp {
+      font-size: 4.5rem;
+    }
+    .city-temp {
+      text-align: center;
+    }
+    .city-temp > sup {
+      font-size: 3rem;
+    }
+    .city-icon {
+      width: 10rem;
+      height: 10rem;
+      &__figure {
+        text-align: center;
+      }
+    }
+    .description {
+      font-size: 1.5rem;
+    }
+    .date-range {
+      font-size: 1rem;
+    }
+  }
+  .weather-forecast {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-top: 8rem;
+    .city {
+      text-align: center;
+
+      width: 100%;
+      padding: 10px 30px;
+
+      .name,
+      .date {
+        font-size: 2rem;
+      }
+      .max-min,
+      .city-temp {
+        font-size: 1.5rem;
+      }
+      .city-temp {
+        text-align: center;
+      }
+      .city-temp > sup {
+        font-size: 1rem;
+      }
+      .city-icon {
+        width: 5rem;
+        height: 5rem;
+      }
+      .description {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  /* MOBILE CARD no :hover state */
+
+  /* @include respond (tab-port) { */
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    perspective: 150rem;
+    -moz-perspective: 150rem;
+    position: relative;
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    overflow: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    grid-column: full-start/full-end;
+
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+      border-radius: 0;
+
+      &--back {
+        transform: rotateY(0);
+        -webkit-clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+    &__details {
+      padding: 1rem 3rem;
+    }
+    &:hover &__side--front {
+      transform: rotateY(0);
+    }
+    &:hover &__side--back {
+      transform: rotateY(0);
+    }
+    /* front side styling no changes
+
+      /back side styling */
+    &__cta {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
+    .card {
+      grid-column: full-start/full-end;
+    }
+    .weather-forecast {
+      grid-template-columns: 1fr;
+    }
+  }
+}
