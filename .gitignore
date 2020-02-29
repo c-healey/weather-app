@@ -34,13 +34,14 @@ app/public/local.php
 !src/js/views
 !src/index.js
 !src/index.html
+!src/img/*
 
-# whitelist everything in the "dist" directory,:
+# whitelist everything in the "docs" directory,:
 
 !docs/css
 !docs/css/style.css
 !docs/img
-!docs/img/icons.svg
+!docs/img/*.svg
 !docs/bundle.js
 !docs/index.html
 
